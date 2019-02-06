@@ -4,9 +4,11 @@
 
     <div class="feed">
 
-        {% for post in posts %}
-            {{ post }}
-        {% endfor %}
+        <ul>
+            {% for post in posts %}
+                <li><a href={{ post.slug }}>{{ post }}</a></li>
+            {% endfor %}
+        </ul>
 
     </div>
 
