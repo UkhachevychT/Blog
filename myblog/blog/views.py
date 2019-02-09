@@ -8,6 +8,9 @@ def index(request):
         'posts': posts,
     })
 
+def about(request):
+    return render(request, 'blog/about.html')
+
 def detail(request, slug):
     post = get_object_or_404(models.Post, slug=slug)
 
