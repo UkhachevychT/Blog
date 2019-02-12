@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load static %}
 {% block content %}
 
     <article class="media content-section">
@@ -15,7 +15,7 @@
             {% endif %}
             </div>
             {% if post.img %}
-                <img class="article-img" src="{{ post.img }}">
+                <img class="img-thumbnail" src="{{ post.img.url }}">
             {% endif %}
             <h2>{{ post.title }}</h2>
             <p class="article-content">{{ post.body }}</p>
