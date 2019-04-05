@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'crispy_forms',
     'blog',
     'users',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls'
@@ -65,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -102,6 +106,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = '44e6edcc426bc3ee4bc9'
+SOCIAL_AUTH_GITHUB_SECRET = '8adc98d3cc518688e9c2b0914b26096c34af2b33'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '582383772267414'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1f32170686de773e06ad2803c1fa882b'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
