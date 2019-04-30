@@ -6,8 +6,10 @@ urlpatterns = [
     path('', views.PostListView.as_view(), name='feed'),
     path('about/', views.about, name='about'),
     re_path(r'^post/(?P<slug>[-\w]+)/$', views.PostDetailView.as_view(), name='post-detail'),
-    path( 'post-create/', views.PostCreateView.as_view(), name='post-create'),
+    path('post-create/', views.PostCreateView.as_view(), name='post-create'),
     re_path(r'^post/(?P<slug>[-\w]+)/update', views.PostUpdateView.as_view(), name='post-update'),
     re_path( r'^post/(?P<slug>[-\w]+)/delete', views.PostDeleteView.as_view(), name='post-delete'),
     path('user/<str:username>/', views.UserPostListView.as_view(), name='user-posts'),
+    path('comment-create/(?P<slug>[-\w]+)', views.CommentCreateView.as_view(), name='comment-create'),
+    # re_path(r'^comment/(?P<post>[0-9]+)/$', views.add_comment, name='add-comment'),
 ]

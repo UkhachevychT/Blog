@@ -42,3 +42,26 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
+
+class Comment(models.Model):
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        editable=False,
+    )
+    body = models.TextField()
+    date = models.DateTimeField(editable=False)
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        editable=False,
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.date = timezone.now()
+        return super(Comment, self).save(*args, **kwargs)
+
+    # def get_absolute_url(self):
+    #     return reverse('post-detail', kwargs={'slug': self.slug})
+

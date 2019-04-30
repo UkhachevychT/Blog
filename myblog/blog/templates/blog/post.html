@@ -19,7 +19,23 @@
             {% endif %}
             <h2>{{ post.title }}</h2>
             <p class="article-content">{{ post.body }}</p>
+            <hr>
+            <a class="btn btn-outline-info mb-4" href="{% url 'comment-create' slug=post.slug %}">Add Comment</a>
+
+            <!-- <button class="btn btn-outline-info mb-4" type="submit">Add Comment</button> -->
         </div>
     </article>
-
-{% endblock %}  
+    <div class="container">
+      {% for comment in comments %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' comment.author.username %}">{{ comment.author }}</a>
+              <small class="text-muted">{{ comment.date }}</small>
+            </div>
+                <p class="article-content">{{ comment.body }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div><!-- /container -->
+{% endblock %} 
