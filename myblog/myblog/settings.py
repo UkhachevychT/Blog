@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'crispy_forms',
-    'django_filters',
     'blog',
     'users',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +125,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '1f32170686de773e06ad2803c1fa882b'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
