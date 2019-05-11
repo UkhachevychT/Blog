@@ -14,14 +14,13 @@ from django.views.generic import (
 
 from . import models
 from .filters import PostFilter
+from django_filters.views import FilterView
 
-class PostListView(ListView):
+class PostListView(FilterView):
     model = models.Post
     template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    # filter_class = PostFilter
+    filterset_class = PostFilter
     paginate_by = 5
-
 
 class UserPostListView(ListView):
     model = models.Post

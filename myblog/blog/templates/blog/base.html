@@ -7,7 +7,7 @@
 
         {% include "blog/header.html" %}
 
-        
+        {% load crispy_forms_tags %}
         <main role="main" class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -24,14 +24,13 @@
                 </div>
                 <div class="col-md-4">
                 <div class="content-section">
-                    <h3>My Sidebar</h3>
-                    <p class='text-muted'>I dont know what to put here yet(
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-light">Latest Posts</li>
-                        <li class="list-group-item list-group-item-light">Announcements</li>
-                        <li class="list-group-item list-group-item-light">etc</li>
-                    </ul>
-                    </p>
+                    <h3>Search</h3>
+                    <hr>
+
+                    <form method="GET">
+                      {{ filter.form.as_p }}
+                      <button class="btn btn-outline-info mb-4" type="submit">Search</button>
+                    </form>
                 </div>
                 </div>
             </div>
